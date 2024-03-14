@@ -3,7 +3,7 @@ from collections import Counter
 from utils.alphabet import alphabet
 from utils.custom_exception import LangError
 
-def decode(input_file, output_file, shift: int, lang = "RU"):
+def decode(input_file, output_file, shift: int = None, lang = "RU"):
     if lang not in alphabet.keys():
         raise LangError(lang)
     
@@ -15,17 +15,16 @@ def decode(input_file, output_file, shift: int, lang = "RU"):
         s: str = f.read()
         s = s.upper()
 
-    c = Counter(s)
+    if not shift:
+        c = Counter(s)
 
-    shift: int = ord(c.most_common()[0][0]) - ord("О")
+        shift: int = ord(c.most_common()[0][0]) - ord("О")
 
-    decoded_alf = alf[shift:-1] + alf[:shift] + " "
-
-
+    encoded_alf: str = alf[shift:] + alf[:shift]
 
     decoded_dict = dict()
 
-    for i, j in zip(decoded_alf, alf):
+    for i, j in zip(encoded_alf, alf):
         decoded_dict[i] = j
     
     res = ""
@@ -37,4 +36,4 @@ def decode(input_file, output_file, shift: int, lang = "RU"):
 
 
 if __name__ == "__main__":
-    decode("files\\ex.txt", "files\\output.txt", 3)
+    decode("files\\output.txt", "files\\ex.txt", 3)

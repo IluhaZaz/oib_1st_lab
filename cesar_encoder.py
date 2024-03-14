@@ -14,12 +14,12 @@ def encode(input_file, output_file, shift: int, lang = "RU"):
         s = "".join(s)
         s = s.upper()
 
-    encoded_dict = dict.fromkeys(alf)
+    encoded_alf: str = alf[shift:] + alf[:shift]
 
-    for i in alf[:-shift]:
-        encoded_dict[i] = chr(ord(i) + shift)
-    for i in alf[-shift:]:
-        encoded_dict[i] = chr(ord(alf[0]) - (ord(alf[-1]) - ord(i) - shift + 1))
+    encoded_dict = dict()
+
+    for i, j in zip(encoded_alf, alf):
+        encoded_dict[j] = i
     
     
     for i in s:
