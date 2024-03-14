@@ -12,7 +12,7 @@ def encode(input_file, output_file, shift: int, lang = "RU"):
     with open(input_file, mode = "r", encoding = "utf-8") as f:
         s: str = f.readlines()
         s = "".join(s)
-        s = s.lower()
+        s = s.upper()
 
     encoded_dict = dict.fromkeys(alf)
 
@@ -30,7 +30,3 @@ def encode(input_file, output_file, shift: int, lang = "RU"):
 
 if __name__ == "__main__":
     encode("files\\input.txt", "files\\output.txt", 3)
-    
-    
-    
-

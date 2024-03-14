@@ -1,6 +1,6 @@
 from string import ascii_lowercase as eng_alf
 
-rus_alf = "абвгдеёжзийклмнопрстуфхцчшщъыьэюя"
+rus_alf = "АБВГДЕЖЗИЙКЛМНОПРСТУФХЦЧШЩЪЫЬЭЮЯ "
 
 alphabet = {
     "RU": rus_alf,
